@@ -65,9 +65,7 @@
               "projects/docs/src/assets",
               "projects/docs/src/assets"
             ],
-            "styles": [
-              "projects/docs/src/styles.scss"
-            ],
+            "styles": ["projects/docs/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -133,9 +131,7 @@
               "projects/docs/src/favicon.ico",
               "projects/docs/src/assets"
             ],
-            "styles": [
-              "projects/docs/src/styles.scss"
-            ],
+            "styles": ["projects/docs/src/styles.scss"],
             "scripts": []
           }
         }
