@@ -15,7 +15,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "aot": true,
             "project": "projects/ngx-pagination/ng-package.json"
           },
           "configurations": {
@@ -142,6 +141,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ngx-pagination"
+  }
 }
