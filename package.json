@@ -8,8 +8,7 @@
     "build": "ng build",
     "build:docs": "ng build docs --base-href /ngx-pagination/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "postinstall": "ivy-ngcc"
+    "test": "ng test"
   },
   "private": true,
   "keywords": [
