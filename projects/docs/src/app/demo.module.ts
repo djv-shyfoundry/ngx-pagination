@@ -16,7 +16,7 @@ import { ServerPageComponent } from './components/server-example/server-page.com
 import { MealsService } from './providers/meals.service';
 import { DocumentationPageComponent } from './components/documentation/documentation-page.component';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 const ConfiguredRouterModule = RouterModule.forRoot([
   {path: '', pathMatch: 'full', component: DocumentationPageComponent},
@@ -26,42 +26,36 @@ const ConfiguredRouterModule = RouterModule.forRoot([
   {path: 'server-paging', component: ServerPageComponent}
 ], {useHash: true});
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ConfiguredRouterModule,
-    NgxPaginationModule,
-    HighlightModule,
-    HttpClientModule,
-  ],
-  declarations: [
-    DocumentationPageComponent,
-    DemoAppComponent,
-    BasicExampleComponent,
-    BasicPageComponent,
-    AdvancedExampleComponent,
-    AdvancedPageComponent,
-    CustomTemplateExampleComponent,
-    CustomPageComponent,
-    ServerExampleComponent,
-    ServerPageComponent,
-    StringFilterPipe
-  ],
-  providers: [
-    MealsService,
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: {
-        coreLibraryLoader: () => import('highlight.js/lib/core'),
-        languages: {
-          typescript: () => import('highlight.js/lib/languages/typescript'),
-          xml: () => import('highlight.js/lib/languages/xml')
+@NgModule({ declarations: [
+        DocumentationPageComponent,
+        DemoAppComponent,
+        BasicExampleComponent,
+        BasicPageComponent,
+        AdvancedExampleComponent,
+        AdvancedPageComponent,
+        CustomTemplateExampleComponent,
+        CustomPageComponent,
+        ServerExampleComponent,
+        ServerPageComponent,
+        StringFilterPipe
+    ],
+    bootstrap: [DemoAppComponent], imports: [BrowserModule,
+        FormsModule,
+        ConfiguredRouterModule,
+        NgxPaginationModule,
+        HighlightModule], providers: [
+        MealsService,
+        {
+            provide: HIGHLIGHT_OPTIONS,
+            useValue: {
+                coreLibraryLoader: () => import('highlight.js/lib/core'),
+                languages: {
+                    typescript: () => import('highlight.js/lib/languages/typescript'),
+                    xml: () => import('highlight.js/lib/languages/xml')
+                },
+            }
         },
-      }
-    }
-  ],
-  bootstrap: [DemoAppComponent]
-})
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class DemoModule {
 }
