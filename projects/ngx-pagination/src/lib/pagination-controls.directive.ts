@@ -5,6 +5,7 @@ import {PaginationService} from './pagination.service';
 import {PaginationInstance} from './pagination-instance';
 
 export interface Page {
+    id: number;
     label: string;
     value: any;
 }
@@ -161,7 +162,7 @@ export class PaginationControlsDirective {
     private createPageArray(currentPage: number, itemsPerPage: number, totalItems: number, paginationRange: number): Page[] {
         // paginationRange could be a string if passed from attribute, so cast to number.
         paginationRange = +paginationRange;
-        let pages = [];
+        let pages: Page[] = [];
         
         // Return 1 as default page number
         // Make sense to show 1 instead of empty when there are no items
@@ -185,10 +186,14 @@ export class PaginationControlsDirective {
             } else {
                 label = pageNumber;
             }
-            pages.push({
-                label: label,
-                value: pageNumber
-            });
+
+            let page: Page = {
+              id: i,
+              label: label,
+              value: pageNumber,
+            };
+            pages.push(page);
+
             i ++;
         }
         return pages;
